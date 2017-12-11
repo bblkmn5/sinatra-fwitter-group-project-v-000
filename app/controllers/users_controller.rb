@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       @user = User.new(username: params[:username], email: params[:email], password: params[:password])
       @user.save
       session[:id] = @user.id
-      redirect "/tweets"
+      redirect "/tweets/tweets"
     end
   end
 
