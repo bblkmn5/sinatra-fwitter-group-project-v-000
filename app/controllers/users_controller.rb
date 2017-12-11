@@ -32,4 +32,15 @@ class UsersController < ApplicationController
     end
   end
 
+  post '/login' do
+    if params[:username] == "" || params[:email] == "" || params[:password] == ""
+      puts "Error logging in. Please try again, or sign up if new user."
+      redirect to '/login'
+    else
+      @user = User.find_by_id(username: params[:username], email: params[:email], password: params[:password])
+      @user.save
+      session[:id] = @user.id
+      redirect "/tweets"
+    end
+  end
 end
