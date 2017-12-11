@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'/users/create_user'
     else
-      redirect '/tweets'
+      redirect '/tweets/tweets'
     end
   end
 
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       @user = User.new(username: params[:username], email: params[:email], password: params[:password])
       @user.save
       session[:id] = @user.id
-      redirect "/tweets/tweets"
+      redirect "/tweets"
     end
   end
 
