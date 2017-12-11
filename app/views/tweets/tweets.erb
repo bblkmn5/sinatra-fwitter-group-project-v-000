@@ -1,5 +1,5 @@
 <h2>Your Tweets</h2>
 
-<% @tweets.each do |tweet| %>
+<% @tweet.each do |tweet| %>
   <a href="/tweets/<%= tweet.id %>"><%= tweet.content %></a>
 <% end %>
