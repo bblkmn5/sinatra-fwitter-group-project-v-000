@@ -33,13 +33,13 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
-    if params[:username] == "" || params[:email] == "" || params[:password] == ""
-      puts "Error logging in. Please try again, or sign up if new user."
-      redirect to '/login'
-    else
-      @user = User.find_by(session[:user_id])
+    user = User.find_by(username: params[:username])
+    if user && user.authenticate(params[:password])
       session[:id] = @user.id
       redirect "/tweets"
+    else
+      puts "Error logging in. Please try again, or sign up if new user."
+      redirect to '/signup'
     end
   end
 end
