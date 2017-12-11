@@ -37,7 +37,7 @@ class UsersController < ApplicationController
       puts "Error logging in. Please try again, or sign up if new user."
       redirect to '/login'
     else
-      @user = User.find_by_id([:user.id])
+      @user = User.find_by_id([@user.id])
       @user.save
       session[:id] = @user.id
       redirect "/tweets"
