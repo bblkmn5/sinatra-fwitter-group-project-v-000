@@ -38,7 +38,6 @@ class UsersController < ApplicationController
       session[:id] = @user.id
       redirect "/tweets"
     else
-      puts "Error logging in. Please try again, or sign up if new user."
       redirect to '/signup'
     end
   end
