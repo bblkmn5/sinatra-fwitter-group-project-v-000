@@ -48,7 +48,7 @@ class TweetsController < ApplicationController
       redirect '/login'
     end
   end
-  
+
   patch '/tweets/:id' do
     if params[:content] == ""
       redirect '/tweets/#{params[:id]}/edit'
@@ -60,7 +60,7 @@ class TweetsController < ApplicationController
     end
   end
 
-  
+
 
   delete '/tweets/:id/delete' do
     if logged_in?
