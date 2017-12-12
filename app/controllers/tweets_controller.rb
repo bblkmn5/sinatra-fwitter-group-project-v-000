@@ -26,7 +26,7 @@ class TweetsController < ApplicationController
       tweet = Tweet.create(content: params[:content])
       user.tweets << tweet
       user.save
-      redirect "/tweets/#{@tweet.id}"
+      redirect "/tweets/"
     end
   end
 
