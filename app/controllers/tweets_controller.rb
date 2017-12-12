@@ -60,17 +60,30 @@ class TweetsController < ApplicationController
     end
   end
 
-  post '/tweets/:id/edit' do
-    if params[:content] != ""
-      tweet = Tweet.find(params[:id])
-      tweet.content = params[:content]
-      tweet.save
-      redirect '/tweets'
+  delete '/tweets/:id/delete' do
+    if logged_in?
+      @tweet = Tweet.find_by_id(params[:id])
+      if @tweet.user_id == current_user.id
+        @tweet.delete
+        redirect '/tweets'
+      else
+        redirect '/tweets'
+      end
     else
-      id = params[:id].to_s
-      redirect '/tweets/#{tweet.id}/edit'
+      redirect to '/login'
     end
   end
+  # post '/tweets/:id/edit' do
+  #   if params[:content] != ""
+  #     tweet = Tweet.find(params[:id])
+  #     tweet.content = params[:content]
+  #     tweet.save
+  #     redirect '/tweets'
+  #   else
+  #     id = params[:id].to_s
+  #     redirect '/tweets/#{tweet.id}/edit'
+  #   end
+  # end
 
 
 end
