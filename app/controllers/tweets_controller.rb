@@ -68,7 +68,7 @@ class TweetsController < ApplicationController
       redirect '/tweets'
     else
       id = params[:id].to_s
-      redirect '/tweets/#{tweets.id}/edit'
+      redirect '/tweets/#{tweet.id}/edit'
     end
   end
 
